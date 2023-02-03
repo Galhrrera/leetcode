@@ -1,0 +1,5 @@
+Dado un número entero, retornar el número de pasos para reducirlo a cero:
+
+1 paso es:
+- Sí el número es par, se divide entre 2.
+- Sí el número es impar, se le resta 1.
