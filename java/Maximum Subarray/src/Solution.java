@@ -5,44 +5,24 @@ public class Solution {
         if (nums.length == 1)
             return nums[0];
 
+        int maxSum = nums[0];
+        int currentSum = 0;
 
-        int pos = 1;
-        int current = 0;
-        int[] sums = new int[nums.length];
-        int sum = 0;
-
-        while (true) {
-            if (pos != current) {
-                sum += nums[pos];
-                pos++;
-
+        for (int n : nums) {
+            if (currentSum < 0) {
+                currentSum = 0;
             }
 
-            if (pos == nums.length) {
-                sums[current] = sum;
-                current++;
-                sum = 0;
-                pos = 0;
-                if (current == nums.length - 1 && pos == nums.length - 2) {
-                    break;
-                }
-            }
-
+            currentSum += n;
+            maxSum = Math.max(maxSum, currentSum);
         }
 
-        int max = Integer.MIN_VALUE;
-        for (int i = 0; i < sums.length; i++) {
-            if (max < sums[i])
-                max = sums[i];
-        }
-
-        return max;
+        return maxSum;
     }
 
     public static void main(String[] args) throws Exception {
 
         int[] nums = { 5, 4, -1, 7, 8 };
         System.out.println(Solution.maxSubArray(nums));
-        System.out.println(":)");
     }
 }
